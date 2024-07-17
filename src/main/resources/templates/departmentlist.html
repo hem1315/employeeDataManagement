@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>List Department</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+	<div align="right">
+	<button class="btn btn-info"><a th:href="@{/employees}">Employee</a></button>&nbsp;&nbsp;
+    
+		<form th:action="@{/logout}" method="post">
+			<p>
+				Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b> &nbsp; &nbsp; <input type="submit" value="Sign Out" />
+			</p>			
+		</form>
+	</div>
+	<div>
+		<h1 align="left">List of Departments</h1>
+		<h3 align="right"><button class="btn btn-success"><a th:href="@{/department}">Add</a></button></h3> 
+	</div>
+	
+	<div>
+		<table class="table table-striped table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th>Department ID</th>
+					<th>Department Name</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dept: ${listdept}">
+					<td th:text="${dept.id}">Department ID</td>
+					<td th:text="${dept.deptName}">Department Name</td>
+					<td>
+						<button class="btn btn-info"><a th:href="@{/edit-department/{id}(id=${dept.id})}">Edit</a></button>&nbsp;&nbsp;
+                    	<button class="btn btn-danger"><a th:href="@{/delete-department/{id}(id=${dept.id})}">Delete</a></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>

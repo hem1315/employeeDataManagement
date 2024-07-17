@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<style>
+		body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .btn {
+            margin-top: 10px;
+            width: 100%;
+        }
+	</style>
+</head>
+<body>
+<div class="container text-center">
+	<h1>Welcome to EDM</h1>
+	<a th:href="@{/login}" class="btn btn-primary btn-lg">Login</a>
+</div>
+</body>
+</html>

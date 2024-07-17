@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Add Employee</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		body {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-success a {
+            color: white;
+            text-decoration: none;
+        }
+        .add-department {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="text-center">
+		<h1>Employee Registration</h1>
+	</div>
+	<div class="add-department">
+		<button class="btn btn-success"><a th:href="@{/deptlist}">Department</a></button>
+	</div>
+	<form th:action="@{/process_employee}" th:object="${employee}" method="post" class="form-container">
+		<div class="form-group row">
+			<label class="col-4 col-form-label">First Name:</label>
+			<div class="col-8">
+				<input type="text" th:field="*{firstName}" class="form-control" required minlength="2" maxlength="20"/>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-4 col-form-label">Last Name:</label>
+			<div class="col-8">
+				<input type="text" th:field="*{lastName}" class="form-control" required minlength="2" maxlength="20"/>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-4 col-form-label">Department:</label>
+			<div class="col-8">
+				<select th:field="*{deptId}" class="form-control">
+					<option th:each="dept : ${depts}" th:value="${dept.id}" th:text="${dept.deptName}"></option>
+				</select>
+			</div>
+		</div>
+		<div class="text-center">
+			<button type="submit" class="btn btn-success">Add Employee</button>
+		</div>
+	</form>
+</div>
+</body>
+</html>
